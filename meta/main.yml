@@ -1,0 +1,22 @@
+---
+galaxy_info:
+  author: Andre Silva
+  description: Installs Grafana
+  role_name: grafana
+
+  license: Unlicense
+
+  min_ansible_version: 2.9
+
+  github_branch: main
+
+  platforms:
+    - name: Ubuntu
+      versions:
+        - bionic
+        - focal
+
+  galaxy_tags:
+    - loki
+
+dependencies: []

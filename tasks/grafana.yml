@@ -1,0 +1,61 @@
+---
+- name: Install dependencies
+  ansible.builtin.apt:
+    update_cache: yes
+    name:
+      - apt-transport-https
+      - ca-certificates
+      - curl
+      - gnupg2
+      - gnupg-agent
+      - software-properties-common
+  tags:
+    - grafana
+    - grafana_system
+
+- name: Add Grafana gpg key
+  ansible.builtin.apt_key:
+    url: https://packages.grafana.com/gpg.key
+    state: present
+  tags:
+    - grafana
+    - grafana_system
+
+- name: Add Grafana Enterprise repository
+  ansible.builtin.apt_repository:
+    repo: "deb https://packages.grafana.com/enterprise/deb stable main"
+    state: present
+    update_cache: yes
+  tags:
+    - grafana
+    - grafana_system
+    - grafana_repo
+
+- name: Add Grafana OSS repository
+  ansible.builtin.apt_repository:
+    repo: "deb https://packages.grafana.com/oss/deb stable main"
+    state: present
+    update_cache: yes
+  tags:
+    - grafana
+    - grafana_system
+    - grafana_repo
+
+- name: Install Grafana
+  ansible.builtin.apt:
+    update_cache: yes
+    name:
+      # - grafana-enterprise
+      - grafana
+  tags:
+    - grafana
+    - grafana_install
+
+- name: Start and enable Grafana service
+  ansible.builtin.service:
+    name: grafana-server
+    state: started
+    enabled: yes
+  tags:
+    - grafana
+    - grafana_service
