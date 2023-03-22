@@ -29,14 +29,6 @@
     - grafana
     - grafana-install
 
-- name: Add Grafana gpg key
-  ansible.builtin.apt_key:
-    url: https://packages.grafana.com/gpg.key
-    state: present
-  tags:
-    - grafana
-    - grafana-install
-
 - name: Add MongoDB apt repo
   ansible.builtin.apt_repository:
     repo: "deb [arch={{ deb_architecture.stdout }} signed-by={{ grafana_key_file }}] https://apt.grafana.com stable main"
