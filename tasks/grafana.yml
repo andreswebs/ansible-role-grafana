@@ -14,7 +14,7 @@
     - grafana-system
 
 - name: DEB architecture
-  ansible.builtin.shell: dpkg --print-architecture
+  ansible.builtin.command: dpkg --print-architecture
   register: deb_architecture
   changed_when: false
   tags:
