@@ -1,7 +1,7 @@
 ---
 - name: Install dependencies
   ansible.builtin.apt:
-    update_cache: yes
+    update_cache: true
     name:
       - apt-transport-https
       - ca-certificates
@@ -42,14 +42,14 @@
     repo: "deb [arch={{ deb_architecture.stdout }} signed-by={{ grafana_key_file }}] https://apt.grafana.com stable main"
     state: present
     filename: grafana
-    update_cache: yes
+    update_cache: true
   tags:
     - grafana
     - grafana-install
 
 - name: Install Grafana
   ansible.builtin.apt:
-    update_cache: yes
+    update_cache: true
     name:
       # - grafana-enterprise
       - grafana
@@ -61,7 +61,7 @@
   ansible.builtin.service:
     name: grafana-server
     state: started
-    enabled: yes
+    enabled: true
   tags:
     - grafana
     - grafana-service

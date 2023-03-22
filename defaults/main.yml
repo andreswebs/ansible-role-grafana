@@ -1,3 +1,2 @@
 grafana_key_url: https://apt.grafana.com/gpg.key
 grafana_key_file: /usr/share/keyrings/grafana.key
-
