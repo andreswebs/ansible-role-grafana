@@ -29,7 +29,7 @@
     - grafana
     - grafana-install
 
-- name: Add MongoDB apt repo
+- name: Add Grafana apt repo
   ansible.builtin.apt_repository:
     repo: "deb [arch={{ deb_architecture.stdout }} signed-by={{ grafana_key_file }}] https://apt.grafana.com stable main"
     state: present
