@@ -17,6 +17,6 @@ galaxy_info:
         - focal
 
   galaxy_tags:
-    - loki
+    - grafana
 
 dependencies: []
